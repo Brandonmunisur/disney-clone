@@ -17,14 +17,13 @@ export const Home = (props) => {
   const userName = useSelector(selectUserName);
 
   useEffect(() => {
+    let recommends = [];
+    let newDisneys = [];
+    let originalsMovies = [];
+    let trendingMovies = [];
     const moviesCollection = collection(db, "movies");
     const q = query(moviesCollection);
     const unsubscribe = onSnapshot(q, (snapshot) => {
-      let recommends = [];
-      let newDisneys = [];
-      let originalsMovies = [];
-      let trendingMovies = [];
-
       snapshot.docs.forEach((doc) => {
         switch (doc.data().type) {
           case "recommend":

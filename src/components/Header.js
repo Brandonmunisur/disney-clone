@@ -60,7 +60,7 @@ const Header = (props) => {
         .signOut()
         .then(() => {
           dispatch(setSignOutState());
-          navigate("/login");
+          navigate("/");
         })
         .catch((error) => {
           // Consider using a more user-friendly way to display errors in production
@@ -75,6 +75,8 @@ const Header = (props) => {
       <Logo>
         <img src="images/logo.svg" alt="Disney+" />
       </Logo>
+      {!userName && <ToGetIn onClick={() => navigate("/home")}>press</ToGetIn>}
+
       {
         // If the user is logged in, display the user's photo and name
         !userName ? (
@@ -107,6 +109,7 @@ const Header = (props) => {
                 <span>SERIES</span>
               </a>
             </NavMenu>
+
             <SignOut>
               <Userimg src={userPhoto} alt={userName} />
               <DropDown>
@@ -259,6 +262,21 @@ const SignOut = styled.div`
       transition-duration: 1s;
     }
   }
+`;
+
+const ToGetIn = styled.div`
+  background-color: rgba(0, 0, 0, 0.6);
+  padding: 8px 16px;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  border: 1px solid #f9f9f9;
+  border-radius: 4px;
+  transition: all 0.2s ease 0s;
+  cursor: pointer;
+  &:hover {
+    background-color: #f9f9f9;
+    color: #000;
+    border-color: transparent;
 `;
 
 export default Header;
