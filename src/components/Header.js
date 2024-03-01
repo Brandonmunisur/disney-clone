@@ -4,7 +4,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import {
   selectUserName,
-  selectUserEmail,
   selectUserPhoto,
   setUserLoginDetails,
   setSignOutState,
@@ -129,6 +128,7 @@ const Nav = styled.nav`
   right: 0;
   height: 70px;
   //   width: 70px;
+
   background-color: #090b13;
   display: flex;
   justify-content: space-between;
@@ -136,7 +136,12 @@ const Nav = styled.nav`
   padding: 0 36px;
   letter-spacing: 16px;
   z-index: 3;
-`;
+  @media (max-width: 700px) {
+    // display: none;
+    white-space: nowrap; /* Prevent content from wrapping to the next line */
+    overflow: auto; /* Enable horizontal scrollbar if content overflows */
+//   // }
+// `;
 const Logo = styled.a`
   padding: 0;
   width: 80px;
@@ -160,7 +165,11 @@ const NavMenu = styled.div`
   position: relative;
   margin-right: auto;
   margin-left: 25px;
-
+  @media (max-width: 700px) {
+    display: none;
+    white-space: nowrap; /* Prevent content from wrapping to the next line */
+    overflow: auto; /* Enable horizontal scrollbar if content overflows */
+  }
   a {
     display: flex;
     align-items: center;
@@ -173,6 +182,7 @@ const NavMenu = styled.div`
       width: 20px;
       z-index: auto;
     }
+
     span {
       color: rgb(249, 249, 249);
       font-size: 13px;
@@ -207,9 +217,6 @@ const NavMenu = styled.div`
       }
     }
   }
-  //   @media (max-width: 768px) {
-  //     display: none;
-  //   }
 `;
 const Login = styled.a`
   background-color: rgba(0, 0, 0, 0.6);
