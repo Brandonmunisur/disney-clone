@@ -75,7 +75,7 @@ const Header = (props) => {
       <Logo>
         <img src="images/logo.svg" alt="Disney+" />
       </Logo>
-      {!userName && <ToGetIn onClick={() => navigate("/home")}>press</ToGetIn>}
+      {!userName && <ToGetIn onClick={() => navigate("/home")}>Guest</ToGetIn>}
 
       {
         // If the user is logged in, display the user's photo and name
